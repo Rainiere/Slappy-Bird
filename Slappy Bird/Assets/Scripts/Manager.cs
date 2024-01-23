@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,6 +22,20 @@ public class Manager : MonoBehaviour
         }
         Instantiate(Obstacle, new Vector2(10, Random.Range( -3,  4)), Quaternion.identity);
         Counter++;
+    }
+
+
+[SerializeField] private string[] Scores ={"Score1", "Score2","Score3", "Score4", "Score5"}; 
+    public void Highscore( int Score){
+        SortArray();
+    }
+
+    private void SortArray(){
+    int[] SortedScores = new int[Scores.Length];
+
+    for(int i = 0; i < Scores.Length; i++){
+        SortedScores[i] = PlayerPrefs.GetInt(Scores[i]);
+    }
     }
     // Start is called before the first frame update
     void Start()
