@@ -29,14 +29,17 @@ public class PlayerController : MonoBehaviour
 
     private int Score;
     [SerializeField] private TMP_Text ScoreTMP; 
+
+    private void OnTriggerEnter2D(Collider2D col){
+        if(col.CompareTag("Wall")){
+            Time.timeScale = 0;
+            _Manager.Highscore(Score);
+        }
+    }
 private void OnTriggerExit2D(Collider2D col){
     if(col.CompareTag("Point")){
         Score++;
 
-    }
-    if (col.CompareTag("Wall")){
-        Time.timeScale = 0;
-        _Manager.Highscore(Score);
     }
     return;
 }
